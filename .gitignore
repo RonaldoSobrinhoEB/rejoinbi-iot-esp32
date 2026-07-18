@@ -1,0 +1,7 @@
+.pio/
+.pio-venv/
+.vscode/
+dist/
+*.bin
+*.elf
+*.map
