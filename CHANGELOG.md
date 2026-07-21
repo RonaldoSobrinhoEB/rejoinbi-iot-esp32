@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.2
+
+- Sessão do ESP32 identificada explicitamente como cliente IoT.
+- A plataforma mantém a sessão IoT ativa sem expiração por inatividade, preservando revogação administrativa.
+
 ## v1.0.1
 
 - Senha da rede temporária simplificada para `RJ` + os 6 caracteres visíveis no final do SSID.

@@ -1,6 +1,6 @@
 # Monitor Rejoin BI para ESP32
 
-Versão estável atual: **v1.0.1**.
+Versão estável atual: **v1.0.2**.
 
 Firmware independente para verificar periodicamente se uma conta consegue manter uma sessão válida na plataforma Rejoin BI.
 
@@ -15,6 +15,8 @@ O projeto não contém URL de cliente, e-mail, senha de plataforma ou senha de W
 5. Após o login, a senha é apagada da memória e somente o cookie de sessão é salvo.
 6. O ESP32 consulta `/plataforma/api/check-session` no intervalo configurado.
 7. Sessão válida mantém o LED saudável aceso. Falha de rede, sessão ou plataforma faz o LED de erro piscar rapidamente.
+
+A sessão criada pelo firmware é identificada como IoT e não expira por inatividade. Ela continua revogável pela plataforma se a conta for desativada ou removida.
 
 ## Primeiro acesso
 
@@ -106,7 +108,7 @@ As dependências são instaladas automaticamente pelo PlatformIO:
 
 ## Download oficial
 
-As versões estáveis são publicadas em [GitHub Releases](https://github.com/RonaldoSobrinhoEB/rejoinbi-iot-esp32/releases). Baixe o arquivo `RejoinBI-IOT-ESP32-v1.0.1.zip`, extraia a pasta e abra o projeto no PlatformIO.
+As versões estáveis são publicadas em [GitHub Releases](https://github.com/RonaldoSobrinhoEB/rejoinbi-iot-esp32/releases). Baixe o arquivo `RejoinBI-IOT-ESP32-v1.0.2.zip`, extraia a pasta e abra o projeto no PlatformIO.
 
 ## Estrutura
 

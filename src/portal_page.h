@@ -442,7 +442,7 @@ static const char CONFIG_PORTAL_HTML[] PROGMEM = R"HTML(
       dot.className = `dot ${healthy ? 'healthy' : failed ? 'error' : 'waiting'}`;
       byId('stateLabel').textContent = data.stateLabel || 'Aguardando';
       byId('stateMessage').textContent = data.message || '';
-      byId('deviceMeta').textContent = `Firmware: v${data.firmwareVersion || '1.0.1'} · Wi-Fi: ${data.wifiConnected ? data.ip : (data.wifiStatus || 'desconectado')} · Última verificação: ${data.lastCheck || 'ainda não realizada'}`;
+      byId('deviceMeta').textContent = `Firmware: v${data.firmwareVersion || '1.0.2'} · Wi-Fi: ${data.wifiConnected ? data.ip : (data.wifiStatus || 'desconectado')} · Última verificação: ${data.lastCheck || 'ainda não realizada'}`;
       byId('modeChip').textContent = data.configMode ? 'Modo de configuração' : 'Monitoramento ativo';
       byId('pinForm').classList.toggle('visible', Boolean(data.pendingPin));
 
