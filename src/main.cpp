@@ -17,7 +17,7 @@ namespace {
 
 constexpr uint16_t DNS_PORT = 53;
 constexpr uint8_t BOOT_BUTTON_PIN = 0;
-constexpr char FIRMWARE_VERSION[] = "1.0";
+constexpr char FIRMWARE_VERSION[] = "1.0.1";
 constexpr uint32_t WIFI_RETRY_MS = 15000;
 constexpr uint32_t WIFI_CONNECT_TIMEOUT_MS = 20000;
 constexpr uint32_t WIFI_FAILURE_GRACE_MS = 3000;
@@ -280,10 +280,9 @@ String accessPointName() {
 }
 
 String accessPointPassword() {
-  const uint64_t chip = ESP.getEfuseMac();
-  char value[13];
-  snprintf(value, sizeof(value), "RJ%08llX", static_cast<unsigned long long>(chip & 0xFFFFFFFFULL));
-  return String(value);
+  // A senha pode ser lida diretamente do SSID exibido na busca de Wi-Fi:
+  // RejoinBI-IOT-34E3EC -> RJ34E3EC (8 caracteres, mínimo exigido pelo WPA2).
+  return "RJ" + chipSuffix();
 }
 
 void addSecurityHeaders() {
@@ -483,7 +482,7 @@ AuthResult authenticatePlatform(const String &email, const String &password, con
   http.collectHeaders(headerKeys, 1);
   http.addHeader("Content-Type", "application/json");
   http.addHeader("Accept", "application/json");
-  http.addHeader("User-Agent", "RejoinBI-ESP32-Monitor/1.0");
+  http.addHeader("User-Agent", "RejoinBI-ESP32-Monitor/1.0.1");
 
   JsonDocument requestDocument;
   requestDocument["email"] = email;
@@ -576,7 +575,7 @@ bool checkPlatformSession(String &message) {
   http.collectHeaders(headerKeys, 1);
   http.addHeader("Accept", "application/json");
   http.addHeader("Cookie", config.sessionCookie);
-  http.addHeader("User-Agent", "RejoinBI-ESP32-Monitor/1.0");
+  http.addHeader("User-Agent", "RejoinBI-ESP32-Monitor/1.0.1");
   lastHttpCode = http.GET();
   const String responseBody = http.getString();
   const String refreshedCookie = extractSessionCookie(http.header("Set-Cookie"));

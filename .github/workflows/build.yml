@@ -1,5 +1,8 @@
 name: Build firmware
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main]
@@ -20,3 +23,21 @@ jobs:
         run: python -m pip install --upgrade platformio
       - name: Build ESP32 firmware
         run: platformio run -e esp32dev
+      - name: Package tagged source
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: |
+          package="RejoinBI-IOT-ESP32-${GITHUB_REF_NAME}"
+          mkdir -p "dist/${package}"
+          cp -R .github src .gitignore CHANGELOG.md LICENSE platformio.ini README.md "dist/${package}/"
+          cd dist
+          zip -r "${package}.zip" "${package}"
+      - name: Publish GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}"
+          "dist/RejoinBI-IOT-ESP32-${GITHUB_REF_NAME}.zip"
+          --title "Rejoin BI IoT ESP32 ${GITHUB_REF_NAME}"
+          --generate-notes

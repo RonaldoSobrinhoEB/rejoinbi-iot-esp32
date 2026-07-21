@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.1
+
+- Senha da rede temporária simplificada para `RJ` + os 6 caracteres visíveis no final do SSID.
+- Exemplo: `RejoinBI-IOT-34E3EC` usa a senha `RJ34E3EC`.
+
 ## v1.0
 
 - Portal local responsivo para configuração do dispositivo.

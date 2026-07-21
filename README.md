@@ -1,6 +1,6 @@
 # Monitor Rejoin BI para ESP32
 
-Versão estável atual: **v1.0**.
+Versão estável atual: **v1.0.1**.
 
 Firmware independente para verificar periodicamente se uma conta consegue manter uma sessão válida na plataforma Rejoin BI.
 
@@ -21,12 +21,14 @@ O projeto não contém URL de cliente, e-mail, senha de plataforma ou senha de W
 Abra o Monitor Serial em `115200 baud` após gravar. O dispositivo mostrará algo semelhante a:
 
 ```text
-Rede Wi-Fi : RejoinBI-IOT-8A3A14
-Senha      : RJ348A3A14
+Rede Wi-Fi : RejoinBI-IOT-34E3EC
+Senha      : RJ34E3EC
 Endereço   : http://192.168.4.1
 ```
 
 Conecte o celular ou computador nessa rede e abra `http://192.168.4.1`. Alguns aparelhos abrem o portal automaticamente.
+
+A senha sempre é `RJ` + os 6 caracteres exibidos no final do nome da rede. Portanto, para `RejoinBI-IOT-34E3EC`, use `RJ34E3EC`.
 
 Na página:
 
@@ -104,7 +106,7 @@ As dependências são instaladas automaticamente pelo PlatformIO:
 
 ## Download oficial
 
-As versões estáveis são publicadas em [GitHub Releases](https://github.com/RonaldoSobrinhoEB/rejoinbi-iot-esp32/releases). Baixe o arquivo `RejoinBI-IOT-ESP32-v1.0.zip`, extraia a pasta e abra o projeto no PlatformIO.
+As versões estáveis são publicadas em [GitHub Releases](https://github.com/RonaldoSobrinhoEB/rejoinbi-iot-esp32/releases). Baixe o arquivo `RejoinBI-IOT-ESP32-v1.0.1.zip`, extraia a pasta e abra o projeto no PlatformIO.
 
 ## Estrutura
 
